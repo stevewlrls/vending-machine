@@ -4,7 +4,7 @@
   "description": "Example of using JS Modules",
   "source": "index.html",
   "scripts": {
-    "dev": "parcel",
+    "start": "parcel",
     "build": "parcel build",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
