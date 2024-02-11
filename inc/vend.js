@@ -59,37 +59,35 @@ const stock = [
 // simulation and links their event handler hooks to functions that provide
 // the required behaviour.
 
-document.addEventListener('DOMContentLoaded', function () {
-  const initialText =
-    'Insert coins and then select a product. All drinks cost £1.50'
-  var textScreen, sorter, buttons
+const initialText =
+  'Insert coins and then select a product. All drinks cost £1.50'
+var textScreen, sorter, buttons
 
-  Coin.mapCoins()
-  Tube.loadStock(stock, drinks)
+Coin.mapCoins()
+Tube.loadStock(stock, drinks)
 
-  textScreen = new TextScreen()
-  textScreen.setContent(initialText)
+textScreen = new TextScreen()
+textScreen.setContent(initialText)
 
-  sorter = new CoinSorter(change)
-  sorter.onAmount = function (amount) {
-    textScreen.setContent(
-      amount === 0
-        ? initialText
-        : `Amount paid:<br><em>£${(amount / 100).toFixed(2)}</em>`
-    )
-    for (const b of buttons) {
-      const lit = amount >= b.price && Tube.find(b.drink)
-      b.lightOn(lit)
-    }
+sorter = new CoinSorter(change)
+sorter.onAmount = function (amount) {
+  textScreen.setContent(
+    amount === 0
+      ? initialText
+      : `Amount paid:<br><em>£${(amount / 100).toFixed(2)}</em>`
+  )
+  for (const b of buttons) {
+    const lit = amount >= b.price && Tube.find(b.drink)
+    b.lightOn(lit)
   }
+}
 
-  buttons = DrinkButton.mapDrinks(drinks)
-  for (const b of buttons)
-    b.onPressed = function () {
-      const tube = Tube.find(b.drink)
-      if (tube && tube.dispenseCan()) {
-        sorter.deduct(b.price)
-        if (!Tube.find(b.drink)) b.lightOn(false) // none left
-      } else alert('Dispense failed!')
-    }
-})
+buttons = DrinkButton.mapDrinks(drinks)
+for (const b of buttons)
+  b.onPressed = function () {
+    const tube = Tube.find(b.drink)
+    if (tube && tube.dispenseCan()) {
+      sorter.deduct(b.price)
+      if (!Tube.find(b.drink)) b.lightOn(false) // none left
+    } else alert('Dispense failed!')
+  }
