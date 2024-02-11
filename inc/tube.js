@@ -10,9 +10,9 @@ The class provides no "event handler" hooks and only one, callable "method":
    - dispenseCan: method (called to dispense a single can)
 */
 
-var tubes // Array of Tube class instances
-
 export class Tube {
+  static tubes
+
   // constructor
   //    Simply stores the initial stock level and the type of drink that has
   // been loaded.
@@ -50,7 +50,7 @@ export class Tube {
   // loaded.
 
   static loadStock(stock, drinks) {
-    tubes = stock.map((s) => new Tube(drinks[s[0]].name, s[1]))
+    Tube.tubes = stock.map((s) => new Tube(drinks[s[0]].name, s[1]))
   }
 
   // find
@@ -58,6 +58,6 @@ export class Tube {
   // drink.
 
   static find(drink) {
-    return tubes.find((t) => t.contains(drink))
+    return Tube.tubes.find((t) => t.contains(drink))
   }
 }
