@@ -2,9 +2,10 @@
   "name": "vending-machine",
   "version": "1.0.0",
   "description": "Example of using JS Modules",
-  "main": "index.js",
+  "source": "index.html",
   "scripts": {
-    "dev": "parcel index.html",
+    "dev": "parcel",
+    "build": "parcel build",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
