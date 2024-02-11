@@ -1,0 +1,143 @@
+body {
+   display: grid;
+   grid-template-columns: 100px 600px 1fr;
+   grid-template-areas: "coins machine ."
+}
+
+/*-------------------------------------
+** Coin area
+**-----------------------------------*/
+
+#coin-area {
+   grid-area: coins;
+   display: flex;
+   flex-flow: column nowrap;
+   align-items: center;
+   margin-top: 40px;
+}
+
+.coin {
+   width: 50px; height: 50px;
+   background: url(images/coins.png) no-repeat;
+   background-size: cover;
+}
+
+.coin.coin-1p { background-position: 0 0; }
+.coin.coin-2p { background-position: -50 0; }
+.coin.coin-5p { background-position: -100 0; }
+.coin.coin-10p { background-position: -150 0; }
+.coin.coin-20p { background-position: -200 0; }
+.coin.coin-50p { background-position: -250 0; }
+.coin.coin-pound { background-position: -300 0; }
+.coin.coin-2pound { background-position: -350 0; }
+
+/*-------------------------------------
+** Machine front
+**-----------------------------------*/
+
+#machine-front {
+   grid-area: machine;
+   height: 1200px;
+   padding: 60px 30px;
+   background: url(images/machine.svg) no-repeat;
+   background-size: contain;
+   display: flex;
+   flex-flow: column nowrap;
+}
+
+/*-------------------------------------
+** Text screen
+**-----------------------------------*/
+
+#text-screen {
+   width: 100px; height: 8.0em;
+   font-family: "Courier", "Courier New", monospace;
+   font-size: 10px;
+   background-color: hsl(205, 100%, 50%);
+   color: hsl(205, 100%, 90%);
+   padding: 3px;
+   box-sizing: border-box;
+   margin-top: 40px;
+}
+
+#text-screen em {
+   font-size: 30px;
+   font-style: normal;
+}
+
+/*-------------------------------------
+** Coin mechanism
+**-----------------------------------*/
+
+#coin-mechanism {
+   width: 100px; height: 60px;
+   background-color: rgb(221, 221, 221);
+   border-radius: 5px;
+   margin-top: 10px;
+   position: relative;
+}
+
+.coin-slot {
+   width: 5px; height: 30px;
+   background-color: black;
+   position: absolute;
+   top: 15px; left: 30px;
+}
+
+.coin-return {
+   width: 12px; height: 12px;
+   position: absolute;
+   top: 24px; left: 60px;
+   border: 1px solid darkgray;
+   border-radius: 6px;
+   box-shadow: 3px 3px 3px darkgray;
+}
+
+.coin-return:active {
+   box-shadow: none;
+}
+
+/*-------------------------------------
+** Drink buttons
+**-----------------------------------*/
+
+#button-area {
+   display: flex;
+   flex-flow: column nowrap;
+   padding-left: 15px;
+}
+
+.drink-button {
+   width: 70px; height: 70px;
+   margin-top: 10px;
+   background-color: white;
+   background-image: url(images/can.svg);
+   background-size: 40px 60px;
+   background-position: center;
+   background-repeat: no-repeat;
+   position: relative;
+}
+
+.drink-button .led {
+   width: 8px; height: 8px;
+   position: absolute;
+   left: 5px; top: 5px;
+   border-radius: 4px;
+   background-color: black;
+}
+
+.drink-button.on .led {
+   background-color: red;
+   box-shadow: 0px 0px 3px red;
+}
+
+.drink-button .drink-name {
+   display: block;
+   position: absolute;
+   left: 50%; top: 50%;
+   transform: translate(-50%, -45%);
+   background-color: rgba(168, 214, 197, 0.5);
+   font-family: cursive;
+   font-size: 10px;
+   text-align: center;
+}
